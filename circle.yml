@@ -1,0 +1,22 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - cd docker/ubuntu-build
+    - docker build -t shift/vernemq-build .
+    - cd ../..
+    - make docker-build
+
+test:
+  override:
+    - true
+
+deployment:
+  hub:
+    branch: feature/docker-build
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push shift/vernemq
