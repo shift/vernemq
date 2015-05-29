@@ -30,7 +30,7 @@ generate:
 	$(REBAR) generate $(OVERLAY_VARS)
 
 docker-build:
-	@docker run -v `pwd`:/opt/vernemq -i -t shift/vernemq-build /bin/bash -c "cd /opt/vernemq && make rel"
+	@docker run -v `pwd`:/opt/vernemq -i -t ${USER}/vernemq-build /bin/bash -c "cd /opt/vernemq && make rel"
 	@docker build -t ${USER}/vernemq .
 ##
 ## Lock Targets
