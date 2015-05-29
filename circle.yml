@@ -5,7 +5,7 @@ machine:
 dependencies:
   override:
     - docker info
-    - cd docker/ubuntu-build; docker build -t shift/vernemq-build .
+    - cd docker/ubuntu-build; docker build -t ${CIRCLE_USERNAME}/vernemq-build .
     - make docker-build
 
 test:
@@ -17,4 +17,4 @@ deployment:
     branch: feature/docker-build
     commands:
       - docker images --all
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS && docker push shift/vernemq
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS && docker push ${CIRCLE_USERNAME}/vernemq
