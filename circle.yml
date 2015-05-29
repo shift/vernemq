@@ -12,7 +12,7 @@ dependencies:
 
 test:
   override:
-    - true
+    - echo "No tests yet"
 
 deployment:
   hub:
