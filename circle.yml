@@ -16,5 +16,6 @@ deployment:
   hub:
     branch: feature/docker-build
     commands:
+      - docker images --all
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push shift/vernemq
