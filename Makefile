@@ -29,7 +29,9 @@ distclean: clean devclean relclean ballclean
 generate:
 	$(REBAR) generate $(OVERLAY_VARS)
 
-
+docker-build:
+	@docker run -v `pwd`:/opt/vernemq -i -t shift/erlang /bin/bash -c "cd /opt/vernemq && make rel"
+	@docker build -t ${USER}/vernemq .
 ##
 ## Lock Targets
 ##
