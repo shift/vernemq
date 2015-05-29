@@ -5,9 +5,7 @@ machine:
 dependencies:
   override:
     - docker info
-    - cd docker/ubuntu-build
-    - docker build -t shift/vernemq-build .
-    - cd ../..
+    - cd docker/ubuntu-build; docker build -t shift/vernemq-build .
     - make docker-build
 
 test:
